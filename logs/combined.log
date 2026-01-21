@@ -1,0 +1,76 @@
+{"level":"info","message":"AIC API Server running on port 3000","nodeEnv":"development","port":3000,"service":"aic-api","timestamp":"2026-01-19T07:27:57.990Z"}
+{"intervalMs":2000,"level":"info","message":"Starting orchestrator sync service","service":"aic-api","timestamp":"2026-01-19T07:27:57.994Z"}
+{"level":"info","message":"Redis connected","service":"aic-api","timestamp":"2026-01-19T07:27:58.009Z"}
+{"email":"admin@test.com","level":"info","message":"Tenant created: 9ed2976b-b7ff-4f2b-9fd9-ed797ae20a6c","name":"My Company","service":"aic-api","timestamp":"2026-01-19T07:55:28.204Z"}
+{"level":"error","message":"Authentication error jwt malformed","name":"JsonWebTokenError","service":"aic-api","stack":"JsonWebTokenError: jwt malformed\n    at module.exports [as verify] (C:\\Users\\bhava\\Downloads\\testing\\pvl\\node_modules\\jsonwebtoken\\verify.js:70:17)\n    at authenticate (C:\\Users\\bhava\\Downloads\\testing\\pvl\\src\\middleware\\auth.ts:28:27)\n    at Layer.handle [as handle_request] (C:\\Users\\bhava\\Downloads\\testing\\pvl\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\bhava\\Downloads\\testing\\pvl\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at Route.dispatch (C:\\Users\\bhava\\Downloads\\testing\\pvl\\node_modules\\express\\lib\\router\\route.js:119:3)\n    at Layer.handle [as handle_request] (C:\\Users\\bhava\\Downloads\\testing\\pvl\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at C:\\Users\\bhava\\Downloads\\testing\\pvl\\node_modules\\express\\lib\\router\\index.js:284:15\n    at Function.process_params (C:\\Users\\bhava\\Downloads\\testing\\pvl\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\bhava\\Downloads\\testing\\pvl\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at Function.handle (C:\\Users\\bhava\\Downloads\\testing\\pvl\\node_modules\\express\\lib\\router\\index.js:175:3)","timestamp":"2026-01-19T07:59:12.228Z"}
+{"level":"info","message":"Pipeline created: 04069958-6f70-488a-b7a9-6acda5d2c251","name":"Startup Idea Evaluator","service":"aic-api","tenantId":"9ed2976b-b7ff-4f2b-9fd9-ed797ae20a6c","timestamp":"2026-01-19T08:01:04.918Z"}
+{"level":"info","message":"Run created: 214913d9-c5f9-4990-bae3-966802605e04","pipelineId":"04069958-6f70-488a-b7a9-6acda5d2c251","service":"aic-api","tenantId":"9ed2976b-b7ff-4f2b-9fd9-ed797ae20a6c","timestamp":"2026-01-19T08:02:57.682Z"}
+{"level":"warn","message":"Failed to notify orchestrator: Request failed with status code 500","service":"aic-api","timestamp":"2026-01-19T08:02:57.758Z"}
+{"level":"info","message":"Run created: 7446bc01-08cd-4ba8-9eca-ac474a783e2b","pipelineId":"04069958-6f70-488a-b7a9-6acda5d2c251","service":"aic-api","tenantId":"9ed2976b-b7ff-4f2b-9fd9-ed797ae20a6c","timestamp":"2026-01-19T08:03:15.314Z"}
+{"level":"warn","message":"Failed to notify orchestrator: Request failed with status code 500","service":"aic-api","timestamp":"2026-01-19T08:03:15.329Z"}
+{"level":"info","message":"AIC API Server running on port 3000","nodeEnv":"development","port":3000,"service":"aic-api","timestamp":"2026-01-20T06:11:24.015Z"}
+{"intervalMs":2000,"level":"info","message":"Starting orchestrator sync service","service":"aic-api","timestamp":"2026-01-20T06:11:24.023Z"}
+{"level":"info","message":"Redis connected","service":"aic-api","timestamp":"2026-01-20T06:11:24.042Z"}
+{"level":"info","message":"AIC API Server running on port 3000","nodeEnv":"development","port":3000,"service":"aic-api","timestamp":"2026-01-20T06:17:06.677Z"}
+{"intervalMs":2000,"level":"info","message":"Starting orchestrator sync service","service":"aic-api","timestamp":"2026-01-20T06:17:06.680Z"}
+{"level":"info","message":"Redis connected","service":"aic-api","timestamp":"2026-01-20T06:17:06.693Z"}
+{"level":"info","message":"AIC API Server running on port 3000","nodeEnv":"development","port":3000,"service":"aic-api","timestamp":"2026-01-20T06:26:03.416Z"}
+{"intervalMs":2000,"level":"info","message":"Starting orchestrator sync service","service":"aic-api","timestamp":"2026-01-20T06:26:03.420Z"}
+{"level":"info","message":"Redis connected","service":"aic-api","timestamp":"2026-01-20T06:26:03.466Z"}
+{"level":"info","message":"AIC API Server running on port 3000","nodeEnv":"development","port":3000,"service":"aic-api","timestamp":"2026-01-20T06:26:06.801Z"}
+{"intervalMs":2000,"level":"info","message":"Starting orchestrator sync service","service":"aic-api","timestamp":"2026-01-20T06:26:06.805Z"}
+{"level":"info","message":"Redis connected","service":"aic-api","timestamp":"2026-01-20T06:26:06.835Z"}
+{"level":"info","message":"AIC API Server running on port 3000","nodeEnv":"development","port":3000,"service":"aic-api","timestamp":"2026-01-20T06:27:46.970Z"}
+{"intervalMs":2000,"level":"info","message":"Starting orchestrator sync service","service":"aic-api","timestamp":"2026-01-20T06:27:46.973Z"}
+{"level":"info","message":"Redis connected","service":"aic-api","timestamp":"2026-01-20T06:27:46.982Z"}
+{"level":"info","message":"AIC API Server running on port 3000","nodeEnv":"development","port":3000,"service":"aic-api","timestamp":"2026-01-20T06:31:09.906Z"}
+{"intervalMs":2000,"level":"info","message":"Starting orchestrator sync service","service":"aic-api","timestamp":"2026-01-20T06:31:09.910Z"}
+{"level":"info","message":"Redis connected","service":"aic-api","timestamp":"2026-01-20T06:31:09.922Z"}
+{"level":"info","message":"AIC API Server running on port 3000","nodeEnv":"development","port":3000,"service":"aic-api","timestamp":"2026-01-20T06:34:45.826Z"}
+{"intervalMs":2000,"level":"info","message":"Starting orchestrator sync service","service":"aic-api","timestamp":"2026-01-20T06:34:45.831Z"}
+{"level":"info","message":"Redis connected","service":"aic-api","timestamp":"2026-01-20T06:34:45.848Z"}
+{"level":"info","message":"AIC API Server running on port 3000","nodeEnv":"development","port":3000,"service":"aic-api","timestamp":"2026-01-20T06:36:39.578Z"}
+{"intervalMs":2000,"level":"info","message":"Starting orchestrator sync service","service":"aic-api","timestamp":"2026-01-20T06:36:39.587Z"}
+{"level":"info","message":"Redis connected","service":"aic-api","timestamp":"2026-01-20T06:36:39.604Z"}
+{"level":"info","message":"AIC API Server running on port 3000","nodeEnv":"development","port":3000,"service":"aic-api","timestamp":"2026-01-20T06:36:48.703Z"}
+{"intervalMs":2000,"level":"info","message":"Starting orchestrator sync service","service":"aic-api","timestamp":"2026-01-20T06:36:48.709Z"}
+{"level":"info","message":"Redis connected","service":"aic-api","timestamp":"2026-01-20T06:36:48.722Z"}
+{"level":"warn","message":"Failed to notify orchestrator: Request failed with status code 500","service":"aic-api","timestamp":"2026-01-20T06:37:15.375Z"}
+{"level":"info","message":"Run created: 15ec594e-b098-4e69-bb60-a352340ec714","pipelineId":"04069958-6f70-488a-b7a9-6acda5d2c251","service":"aic-api","tenantId":"9ed2976b-b7ff-4f2b-9fd9-ed797ae20a6c","timestamp":"2026-01-20T06:37:24.140Z"}
+{"level":"warn","message":"Failed to notify orchestrator: Request failed with status code 500","service":"aic-api","timestamp":"2026-01-20T06:37:24.154Z"}
+{"level":"warn","message":"Failed to notify orchestrator: Request failed with status code 500","service":"aic-api","timestamp":"2026-01-20T06:37:28.381Z"}
+{"level":"warn","message":"Authentication failed jwt malformed","name":"JsonWebTokenError","service":"aic-api","timestamp":"2026-01-20T06:39:47.470Z"}
+{"level":"warn","message":"Failed to notify orchestrator: timeout of 5000ms exceeded","service":"aic-api","timestamp":"2026-01-20T06:40:54.520Z"}
+{"level":"info","message":"Run created: 3f39b9c9-4220-43d6-a220-d74e1b78a06d","pipelineId":"04069958-6f70-488a-b7a9-6acda5d2c251","service":"aic-api","tenantId":"9ed2976b-b7ff-4f2b-9fd9-ed797ae20a6c","timestamp":"2026-01-20T06:41:07.224Z"}
+{"level":"warn","message":"Failed to notify orchestrator: timeout of 5000ms exceeded","service":"aic-api","timestamp":"2026-01-20T06:41:12.246Z"}
+{"level":"info","message":"Run created: e99c1f79-a41d-407e-bd1d-82f0df511b0f","pipelineId":"04069958-6f70-488a-b7a9-6acda5d2c251","service":"aic-api","tenantId":"9ed2976b-b7ff-4f2b-9fd9-ed797ae20a6c","timestamp":"2026-01-20T07:08:45.897Z"}
+{"level":"info","message":"AIC API Server running on port 3000","nodeEnv":"development","port":3000,"service":"aic-api","timestamp":"2026-01-20T08:02:33.219Z"}
+{"intervalMs":2000,"level":"info","message":"Starting orchestrator sync service","service":"aic-api","timestamp":"2026-01-20T08:02:33.223Z"}
+{"level":"info","message":"Redis connected","service":"aic-api","timestamp":"2026-01-20T08:02:33.235Z"}
+{"level":"info","message":"Run created: ef1f1bf3-3a68-4a03-9baa-992b1c91b87f","pipelineId":"04069958-6f70-488a-b7a9-6acda5d2c251","service":"aic-api","tenantId":"9ed2976b-b7ff-4f2b-9fd9-ed797ae20a6c","timestamp":"2026-01-20T08:09:21.151Z"}
+{"level":"info","message":"AIC API Server running on port 3000","nodeEnv":"development","port":3000,"service":"aic-api","timestamp":"2026-01-20T14:20:44.632Z"}
+{"intervalMs":2000,"level":"info","message":"Starting orchestrator sync service","service":"aic-api","timestamp":"2026-01-20T14:20:44.639Z"}
+{"level":"info","message":"Redis connected","service":"aic-api","timestamp":"2026-01-20T14:20:44.669Z"}
+{"level":"info","message":"AIC API Server running on port 3000","nodeEnv":"development","port":3000,"service":"aic-api","timestamp":"2026-01-20T14:25:43.113Z"}
+{"intervalMs":2000,"level":"info","message":"Starting orchestrator sync service","service":"aic-api","timestamp":"2026-01-20T14:25:43.117Z"}
+{"level":"info","message":"Redis connected","service":"aic-api","timestamp":"2026-01-20T14:25:43.126Z"}
+{"level":"info","message":"AIC API Server running on port 3000","nodeEnv":"development","port":3000,"service":"aic-api","timestamp":"2026-01-20T14:29:55.201Z"}
+{"intervalMs":2000,"level":"info","message":"Starting orchestrator sync service","service":"aic-api","timestamp":"2026-01-20T14:29:55.205Z"}
+{"level":"info","message":"Redis connected","service":"aic-api","timestamp":"2026-01-20T14:29:55.214Z"}
+{"level":"info","message":"AIC API Server running on port 3000","nodeEnv":"development","port":3000,"service":"aic-api","timestamp":"2026-01-20T14:42:47.052Z"}
+{"intervalMs":2000,"level":"info","message":"Starting orchestrator sync service","service":"aic-api","timestamp":"2026-01-20T14:42:47.056Z"}
+{"level":"info","message":"Redis connected","service":"aic-api","timestamp":"2026-01-20T14:42:47.077Z"}
+{"email":"admin@company.com","level":"info","message":"Tenant created: d655a0da-eda9-4fea-b31d-79bb887061bc","name":"My Company","service":"aic-api","timestamp":"2026-01-20T14:47:07.405Z"}
+{"email":"admin@company.com","level":"info","message":"Tenant created: b5feab4e-16b6-4a9e-a14d-28e59451dd61","name":"My Company","service":"aic-api","timestamp":"2026-01-20T14:54:52.980Z"}
+{"level":"info","message":"Pipeline created: ac40b115-f4b0-4c44-a53b-99d82ddf6dd6","name":"Startup Idea Evaluator","service":"aic-api","tenantId":"b5feab4e-16b6-4a9e-a14d-28e59451dd61","timestamp":"2026-01-20T15:06:48.170Z"}
+{"level":"info","message":"Run created: 7614c51b-9936-4683-938d-7356316652c9","pipelineId":"ac40b115-f4b0-4c44-a53b-99d82ddf6dd6","service":"aic-api","tenantId":"b5feab4e-16b6-4a9e-a14d-28e59451dd61","timestamp":"2026-01-20T15:08:32.771Z"}
+{"level":"warn","message":"Failed to notify orchestrator: timeout of 5000ms exceeded","service":"aic-api","timestamp":"2026-01-20T15:08:37.875Z"}
+{"level":"info","message":"Run created: 84a84b55-b79c-4055-80dc-3784ae9ec564","pipelineId":"ac40b115-f4b0-4c44-a53b-99d82ddf6dd6","service":"aic-api","tenantId":"b5feab4e-16b6-4a9e-a14d-28e59451dd61","timestamp":"2026-01-20T15:09:20.818Z"}
+{"level":"info","message":"Run created: 8285f2cd-f439-42f1-b4a6-d66065aba801","pipelineId":"ac40b115-f4b0-4c44-a53b-99d82ddf6dd6","service":"aic-api","tenantId":"b5feab4e-16b6-4a9e-a14d-28e59451dd61","timestamp":"2026-01-20T15:14:54.168Z"}
+{"level":"info","message":"Run created: a2aaf450-213e-42e8-8320-21a6589d575b","pipelineId":"ac40b115-f4b0-4c44-a53b-99d82ddf6dd6","service":"aic-api","tenantId":"b5feab4e-16b6-4a9e-a14d-28e59451dd61","timestamp":"2026-01-20T15:32:29.294Z"}
+{"level":"info","message":"Run created: 48689d6d-2c17-401b-833e-201da283b38c","pipelineId":"ac40b115-f4b0-4c44-a53b-99d82ddf6dd6","service":"aic-api","tenantId":"b5feab4e-16b6-4a9e-a14d-28e59451dd61","timestamp":"2026-01-20T16:37:10.482Z"}
+{"level":"info","message":"AIC API Server running on port 3000","nodeEnv":"development","port":3000,"service":"aic-api","timestamp":"2026-01-21T05:45:14.527Z"}
+{"intervalMs":2000,"level":"info","message":"Starting orchestrator sync service","service":"aic-api","timestamp":"2026-01-21T05:45:14.537Z"}
+{"level":"info","message":"Redis connected","service":"aic-api","timestamp":"2026-01-21T05:45:14.553Z"}
+{"level":"info","message":"Run created: 3bd145d2-f18e-4285-a05c-b8864ccbb87d","pipelineId":"ac40b115-f4b0-4c44-a53b-99d82ddf6dd6","service":"aic-api","tenantId":"b5feab4e-16b6-4a9e-a14d-28e59451dd61","timestamp":"2026-01-21T05:46:25.619Z"}
+{"level":"info","message":"Run created: 3513f0fc-10fe-419e-a930-8debefaf9630","pipelineId":"ac40b115-f4b0-4c44-a53b-99d82ddf6dd6","service":"aic-api","tenantId":"b5feab4e-16b6-4a9e-a14d-28e59451dd61","timestamp":"2026-01-21T05:48:25.675Z"}

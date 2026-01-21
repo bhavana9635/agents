@@ -1,0 +1,112 @@
+{
+  "name": "Startup Idea Evaluator",
+  "description": "Evaluates startup ideas with web research, competitor analysis, and structured scoring",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "idea": {
+        "type": "string",
+        "description": "The startup idea to evaluate (one-liner)"
+      },
+      "targetMarket": {
+        "type": "string",
+        "description": "Target market or customer segment",
+        "optional": true
+      }
+    },
+    "required": ["idea"]
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "problemStatement": {
+        "type": "string",
+        "description": "Expanded problem statement"
+      },
+      "valueProposition": {
+        "type": "string",
+        "description": "Clear value proposition"
+      },
+      "competitors": {
+        "type": "array",
+        "items": {"type": "string"}
+      },
+      "feasibilityScore": {
+        "type": "number",
+        "description": "Tech feasibility score (0-10)"
+      },
+      "recommendation": {
+        "type": "string",
+        "enum": ["validate", "pivot", "kill"]
+      }
+    }
+  },
+  "steps": {
+    "nodes": [
+      {
+        "id": "expand_idea",
+        "type": "agent",
+        "config": {
+          "system_prompt": "You are a precise VC analyst. Always respond with STRICT JSON, no markdown, no commentary.",
+          "prompt": "Expand the following startup idea into a clear problem statement and value proposition.\n\nReturn ONLY valid JSON in this exact shape:\n{\n  \"problemStatement\": \"...\",\n  \"valueProposition\": \"...\"\n}\n\nIdea: {{idea}}{{#if targetMarket}}\nTarget market: {{targetMarket}}{{/if}}"
+        }
+      },
+      {
+        "id": "web_research",
+        "type": "tool",
+        "config": {
+          "tool": "web_search",
+          "query": "{{idea}} competitors market analysis"
+        }
+      },
+      {
+        "id": "competitor_analysis",
+        "type": "tool",
+        "config": {
+          "tool": "competitor_analysis",
+          "idea": "{{idea}}",
+          "searchResults": "{{web_research.result}}"
+        }
+      },
+      {
+        "id": "feasibility_scoring",
+        "type": "agent",
+        "config": {
+          "system_prompt": "You are a startup feasibility evaluator. Always respond with STRICT JSON, no markdown.",
+          "prompt": "Evaluate the tech feasibility, GTM difficulty, and adoption risk for this idea and its competitive landscape.\n\nReturn ONLY valid JSON in this exact shape:\n{\n  \"feasibilityScore\": <number between 0 and 10>,\n  \"recommendation\": \"validate\" | \"pivot\" | \"kill\",\n  \"rationale\": \"short explanation\"\n}\n\nIdea: {{idea}}\nExpanded idea: {{expand_idea_output.problemStatement}} / {{expand_idea_output.valueProposition}}\nCompetitors: {{competitor_analysis.competitors}}"
+        }
+      },
+      {
+        "id": "generate_report",
+        "type": "agent",
+        "config": {
+          "system_prompt": "You are an assistant that composes final structured reports. Output ONLY JSON, no markdown.",
+          "prompt": "Using the previous step outputs, generate the FINAL structured evaluation object.\n\nReturn ONLY valid JSON in this exact shape (no extra fields):\n{\n  \"problemStatement\": \"...\",\n  \"valueProposition\": \"...\",\n  \"competitors\": [\"...\"],\n  \"feasibilityScore\": <number between 0 and 10>,\n  \"recommendation\": \"validate\" | \"pivot\" | \"kill\"\n}\n\nData you have:\n- Expanded idea JSON from expand_idea: {{expand_idea_output}}\n- Competitor analysis JSON: {{competitor_analysis}}\n- Feasibility scoring JSON: {{feasibility_scoring_output}}\n\nFill the fields by copying or summarizing from those sources. Do NOT include any keys other than the five specified."
+        }
+      }
+    ],
+    "edges": [
+      {
+        "from": "expand_idea",
+        "to": "web_research"
+      },
+      {
+        "from": "web_research",
+        "to": "competitor_analysis"
+      },
+      {
+        "from": "competitor_analysis",
+        "to": "feasibility_scoring"
+      },
+      {
+        "from": "feasibility_scoring",
+        "to": "generate_report"
+      }
+    ]
+  },
+  "policies": {
+    "allowedTools": ["web_search", "competitor_analysis"],
+    "maxBudget": 1.0,
+    "dataScopes": ["public_web"]
+  }
+}

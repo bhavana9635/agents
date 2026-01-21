@@ -1,0 +1,185 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Tenant {
+  id        String   @id @default(uuid())
+  name      String
+  plan      String   @default("free")
+  quotas    Json?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  users        User[]
+  pipelines    Pipeline[]
+  runs         Run[]
+  apiKeys      ApiKey[]
+  integrations Integration[]
+
+  @@map("tenants")
+}
+
+model User {
+  id           String   @id @default(uuid())
+  tenantId     String
+  email        String
+  passwordHash String
+  name         String?
+  roles        Json     @default("[]")
+  permissions  Json?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  tenant      Tenant      @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  createdRuns Run[]       @relation("RunCreator")
+  approvals   Approval[]
+
+  @@unique([tenantId, email])
+  @@index([tenantId, email])
+  @@map("users")
+}
+
+model ApiKey {
+  id        String   @id @default(uuid())
+  tenantId  String
+  name      String
+  keyHash   String
+  scopes    Json?
+  lastUsedAt DateTime?
+  expiresAt DateTime?
+  createdAt DateTime @default(now())
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  @@index([keyHash])
+  @@map("api_keys")
+}
+
+model Integration {
+  id        String   @id @default(uuid())
+  tenantId  String
+  type      String
+  name      String
+  config    Json
+  status    String   @default("active")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+
+  @@index([tenantId, type])
+  @@map("integrations")
+}
+
+model Pipeline {
+  id          String   @id @default(uuid())
+  tenantId    String
+  name        String
+  description String?
+  version     Int      @default(1)
+  inputSchema Json
+  outputSchema Json
+  steps       Json
+  policies    Json?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  createdBy   String?
+
+  tenant Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  runs   Run[]
+
+  @@unique([tenantId, name, version])
+  @@index([tenantId, name])
+  @@index([tenantId, isActive])
+  @@map("pipelines")
+}
+
+model Run {
+  id          String   @id @default(uuid())
+  tenantId    String
+  pipelineId  String
+  status      String
+  inputs      Json
+  outputs     Json?
+  cost        Float    @default(0)
+  tokensUsed  Int      @default(0)
+  latencyMs   Int?
+  errorMessage String?
+  startedAt   DateTime?
+  finishedAt  DateTime?
+  createdAt   DateTime @default(now())
+  createdBy   String?
+
+  tenant   Tenant    @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  pipeline Pipeline  @relation(fields: [pipelineId], references: [id])
+  creator  User?     @relation("RunCreator", fields: [createdBy], references: [id])
+  steps    StepRun[]
+  approvals Approval[]
+  artifacts Artifact[]
+
+  @@index([tenantId, pipelineId])
+  @@index([tenantId, status])
+  @@map("runs")
+}
+
+model StepRun {
+  id          String   @id @default(uuid())
+  runId       String
+  stepId      String
+  stepType    String
+  toolUsed    String?
+  inputs      Json
+  outputs     Json?
+  status      String
+  tokensUsed  Int      @default(0)
+  cost        Float    @default(0)
+  latencyMs   Int?
+  logsUri     String?
+  errorMessage String?
+  startedAt   DateTime?
+  finishedAt  DateTime?
+  orderIndex  Int
+
+  run Run @relation(fields: [runId], references: [id], onDelete: Cascade)
+
+  @@index([runId])
+  @@map("step_runs")
+}
+
+model Approval {
+  id          String   @id @default(uuid())
+  runId       String
+  stepId      String?
+  requestedBy String?
+  approverId  String?
+  decision    String?
+  comment     String?
+  createdAt   DateTime @default(now())
+  decidedAt   DateTime?
+
+  run    Run  @relation(fields: [runId], references: [id], onDelete: Cascade)
+  approver User? @relation(fields: [approverId], references: [id])
+
+  @@index([runId])
+  @@map("approvals")
+}
+
+model Artifact {
+  id        String   @id @default(uuid())
+  runId     String
+  type      String
+  uri       String
+  metadata  Json?
+  createdAt DateTime @default(now())
+
+  run Run @relation(fields: [runId], references: [id], onDelete: Cascade)
+
+  @@index([runId])
+  @@map("artifacts")
+}

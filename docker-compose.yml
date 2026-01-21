@@ -1,0 +1,80 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: aic-postgres
+    environment:
+      POSTGRES_USER: aic_user
+      POSTGRES_PASSWORD: aic_password
+      POSTGRES_DB: aic_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U aic_user"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: aic-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: aic-api
+    environment:
+      DATABASE_URL: postgresql://aic_user:aic_password@postgres:5432/aic_db
+      REDIS_URL: redis://redis:6379
+      PORT: 3000
+      NODE_ENV: development
+      ORCHESTRATOR_URL: http://orchestrator:8000
+      JWT_SECRET: change-me-in-production
+      API_KEY_SECRET: change-me-in-production
+    ports:
+      - "3000:3000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./src:/app/src
+      - ./logs:/app/logs
+      - ./storage:/app/storage
+
+  orchestrator:
+    build:
+      context: .
+      dockerfile: Dockerfile.orchestrator
+    container_name: aic-orchestrator
+    environment:
+      REDIS_URL: redis://redis:6379
+      DATABASE_URL: postgresql://aic_user:aic_password@postgres:5432/aic_db
+      API_URL: http://api:3000
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./orchestrator:/app/orchestrator
+
+volumes:
+  postgres_data:
+  redis_data:
